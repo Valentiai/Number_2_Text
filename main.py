@@ -64,14 +64,19 @@ def hundred(n:str) -> str:
                     return f"{d_1[int(n[0])]} hundred {d_10[int(n[1])*10]} {d_1[int(n[2])]}"
                 except KeyError:
                     return f"{d_1[int(n[0])]} hundred {d_1[int(n[2])]}"
-
-res = int2txt(input()[::-1])
+x = input()
+if x[0]=='-':
+    r = 'minus '
+    x = x[1:]
+else:
+    r = ''
+res = int2txt(x[::-1])
 match len(res):
     case 0:
         print('Wrong input')
     case 1:
-        print(hundred(res[0]))
+        print(r+hundred(res[0]))
     case 2:
-        print(f"{hundred(res[0])} thousand {hundred(res[1])}")
+        print(r+f"{hundred(res[0])} thousand {hundred(res[1])}")
     case 3:
-        print(f"{hundred(res[0])} million {hundred(res[1])} thousand {hundred(res[2])}")
+        print(r+f"{hundred(res[0])} million {hundred(res[1])} thousand {hundred(res[2])}")
